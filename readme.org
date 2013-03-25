@@ -1,0 +1,23 @@
+* About
+
+This is a copy of [[http://home.comcast.net/~urbanjost/CLONE/KRACKEN/krackenhelp.html][KRACKEN Fortran module]] for arguments parsing with
+[[http://www.cmake.org/][CMake]] bells & whistles added.
+
+* Usage
+
+In your CMake project include the following:
+
+#+BEGIN_EXAMPLE
+find_package(KRACKEN QUIET)
+if(KRACKEN_DIR)
+  include_directories(${KRACKEN_DIR})
+  add_executable(MyProject some_source.f90)
+  target_link_libraries(MyProject kracken)
+else()
+  message("Download and build KRACKEN to build this project, then reconfigure this project.")
+endif()
+#+END_EXAMPLE
+
+You may want to modify the above example for your needs according to
+[[http://www.cmake.org/cmake/help/v2.8.10/cmake.html#command:find_package][CMake manual]], e.g. by strictly requiring KRACKEN. Note that KRACKEN
+must be built already for the magic to happen.
